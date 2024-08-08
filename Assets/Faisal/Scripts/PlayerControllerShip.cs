@@ -89,6 +89,8 @@ public class PlayerControllerShip : MonoBehaviour
         if (caughtFishinNet)
         {
             Debug.Log("You Caught Fish!");
+            int randomNumber = Random.Range(2, 6);
+            UIManagerFishing.Instance.IncreaseFishAmount(randomNumber);
         }
         if (vibrationCoroutine != null)
         {
