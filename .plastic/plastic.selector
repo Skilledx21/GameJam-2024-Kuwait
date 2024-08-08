@@ -1,0 +1,4 @@
+repository "GameJam 2024 Kuwait@Break_s_Studio@cloud"
+  path "/"
+    br "/main"
+    co "/main"
