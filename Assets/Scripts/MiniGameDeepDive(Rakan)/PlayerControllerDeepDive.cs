@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerControllerDeepDive : MonoBehaviour
 {
     float _pSpeed = 5f;
+    float rotationSpeed;
 
 
     Rigidbody2D rb;
@@ -18,6 +20,7 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
     private void Start()
     {
+        rotationSpeed = 3f;
         rb = GetComponent<Rigidbody2D>();
         isFlipped = false;
     }
@@ -29,36 +32,58 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
         rb.velocity = new Vector2(_InputX * _pSpeed, _InputY * _pSpeed);
 
+        FlipPlayer();
+        PlayerMovement();
+
+    }
+    void PlayerMovement()
+    {
+        Quaternion targetRotation;
 
         if (isFlipped == false)
         {
             if (rb.velocity.y > 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 120);
+                targetRotation = Quaternion.Euler(0, 0, 120);
             }
             else if (rb.velocity.y < 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 60);
+                targetRotation = Quaternion.Euler(0, 0, 60);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, 90);
+                targetRotation = Quaternion.Euler(0, 0, 90);
             }
-        }else
+        }
+        else
         {
             if (rb.velocity.y > 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, -120);
+                targetRotation = Quaternion.Euler(0, 0, -120);
             }
             else if (rb.velocity.y < 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, -60);
+                targetRotation = Quaternion.Euler(0, 0, -60);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, -90);
+                targetRotation = Quaternion.Euler(0, 0, -90);
             }
         }
 
+        // Smoothly rotate to the target rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    void FlipPlayer()
+    {
+        if (rb.velocity.x < 0)
+        {
+            isFlipped = true;
+        }
+        else if (rb.velocity.x > 0)
+        {
+            isFlipped = false;
+        }
     }
 }

@@ -7,7 +7,7 @@ public class AnswerObject : MonoBehaviour
     public void SetAnswer(string answerText, bool isCorrect)
     {
         isCorrectAnswer = isCorrect;
-        // Set any additional properties or visuals based on answerText
+       
     }
 
     void OnMouseDown()
@@ -25,12 +25,12 @@ public class AnswerObject : MonoBehaviour
     void CorrectAnswer()
     {
         Debug.Log("Correct!");
-        // Implement correct answer logic
+        
     }
 
     void WrongAnswer()
     {
         Debug.Log("Wrong!");
-        // Implement wrong answer logic
+        
     }
 }

@@ -7,7 +7,7 @@ public class AnswerCollider : MonoBehaviour
     public void SetAnswer(string answerText, bool isCorrect)
     {
         isCorrectAnswer = isCorrect;
-        // Set any additional properties or visuals based on answerText
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -27,13 +27,15 @@ public class AnswerCollider : MonoBehaviour
 
     void CorrectAnswer()
     {
+        //if the answer is correct let do something like display "Correct!" or whatever we want
         Debug.Log("Correct!");
-        // Implement correct answer logic
+        
     }
 
     void WrongAnswer()
     {
+        //We can add whatever we want here
         Debug.Log("Wrong!");
-        // Implement wrong answer logic
+        
     }
 }
