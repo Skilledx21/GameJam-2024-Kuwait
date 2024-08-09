@@ -22,6 +22,7 @@ public class PlayerControllerShip : MonoBehaviour
     private Coroutine catchtimerCoroutine;
 
      Animator netanimator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,14 +55,19 @@ public class PlayerControllerShip : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            if (!NetThrown)
+            if (UIManagerFishing.Instance.gameStarted)
             {
-                ThrowNet();
+                if (!NetThrown)
+                {
+                    ThrowNet();
+                }
+                else
+                {
+                    RaiseNet();
+                }
             }
-            else
-            {
-                RaiseNet();
-            }
+
+            
             
 
         }
@@ -73,10 +79,13 @@ public class PlayerControllerShip : MonoBehaviour
 
     private void ThrowNet()
     {
+
+        
+
         netanimator.Play("Throw");
         Debug.Log("Thrown Net");
         NetThrown = true;
-        
+        caughtFishinNet = false;
         canMove = false;
 
         float CatchfishDelay = Random.Range(5f, 15f);
@@ -96,6 +105,8 @@ public class PlayerControllerShip : MonoBehaviour
             Debug.Log("You Caught Fish!");
             int randomNumber = Random.Range(2, 6);
             UIManagerFishing.Instance.IncreaseFishAmount(randomNumber);
+
+            
         }
         if (vibrationCoroutine != null)
         {

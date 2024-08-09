@@ -6,10 +6,10 @@ public class FishingGame_Fish : MonoBehaviour
 {
 
     [SerializeField] private float swimSpeed = 2f;
-    [SerializeField] private float changeDirectionTime = 2f;
 
     private Vector2 swimDirection;
-    private float timeToChangeDirection;
+    private float ChangeDirectionTime = 2f;
+    [SerializeField]private float timeuntilChangeDirection = 2f;
 
     private Rigidbody2D rb;
     private bool movingRight = true;
@@ -29,7 +29,16 @@ public class FishingGame_Fish : MonoBehaviour
     void Update()
     {
         Swim();
-        ChangeDirectionIfNeeded();
+
+
+        timeuntilChangeDirection -= Time.deltaTime;
+
+        if (timeuntilChangeDirection <= 0f)
+        {
+            SetRandomDirection();
+            timeuntilChangeDirection = ChangeDirectionTime;
+        }
+
     }
 
     private void Swim()
@@ -38,25 +47,13 @@ public class FishingGame_Fish : MonoBehaviour
         transform.Translate(swimDirection * swimSpeed * Time.deltaTime);
     }
 
-    private void ChangeDirectionIfNeeded()
-    {
-        timeToChangeDirection -= Time.deltaTime;
-
-        // If it's time to change direction
-        if (timeToChangeDirection <= 0)
-        {
-            SetRandomDirection();
-        }
-
-
-    }
-    private void Flip()
+    private void SetRandomDirection()
     {
         // Randomly choose to move left (-1) or right (1)
         float direction = Random.Range(0, 2) == 0 ? -1f : 1f;
 
         // Set the swim direction based on the random direction
-        swimDirection = new Vector2(direction, 0);
+        swimDirection = new Vector2(direction, 0); // Move only on the X-axis
 
         // Flip the fish's sprite if changing direction
         if (direction > 0 && !movingRight)
@@ -67,31 +64,20 @@ public class FishingGame_Fish : MonoBehaviour
         {
             Flip();
         }
-
-        // Reset the timer for the next direction change
-        timeToChangeDirection = changeDirectionTime;
     }
 
-    private void SetRandomDirection()
+    private void Flip()
     {
+        // Flip the fish horizontally
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
 
-        float randomDirection = Random.Range(0, 2) == 0 ? -1f : 1f;
-        swimDirection = new Vector2(randomDirection, 0); 
-
-        timeToChangeDirection = 0f;
-        Debug.Log("Changing Directions");
+        // Toggle the movingRight flag
+        movingRight = !movingRight;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Net"))
-        {
-            Caught();
-        }
-    }
 
-    private void Caught()
-    {
-        Debug.Log("Caught");
-    }
+   
+    
 }

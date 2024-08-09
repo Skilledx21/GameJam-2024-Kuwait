@@ -1,3 +1,4 @@
+using ArabicSupport;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,16 @@ public class UIManagerFishing : MonoBehaviour
     public Text CaughtFishText;
     private int FishCaught;
     public Text Timelimit;
-
-    [SerializeField] private int FishNeeded = 5;
+    public Text hint;
+    [SerializeField] private int FishNeeded = 10;
     private float timeRemaining = 60f;
     private bool timerIsRunning = false;
+
+    [SerializeField] private GameObject HintPanel;
+    [SerializeField] private Text ContinueText;
+    [SerializeField] private Text TimeremainingText;
+    [SerializeField] private Text FishCaughtText;
+    public bool gameStarted = false;
     private void Awake()
     {
         
@@ -27,6 +34,11 @@ public class UIManagerFishing : MonoBehaviour
 
     private void Start()
     {
+        hint.text = ArabicFixer.Fix(hint.text);
+        ContinueText.text = ArabicFixer.Fix(ContinueText.text);
+        TimeremainingText.text = ArabicFixer.Fix(TimeremainingText.text);
+        FishCaughtText.text = ArabicFixer.Fix(FishCaughtText.text);
+        Time.timeScale = 0f;
         timerIsRunning = true;
         UpdateTimeDisplay();
     }
@@ -69,5 +81,12 @@ public class UIManagerFishing : MonoBehaviour
         {
             Debug.Log("You Lost");
         }
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+        HintPanel.SetActive(false);
+        gameStarted = true;
     }
 }
