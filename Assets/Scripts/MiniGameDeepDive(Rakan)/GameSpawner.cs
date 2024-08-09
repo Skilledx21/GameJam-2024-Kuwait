@@ -17,7 +17,7 @@ public class GameSpawner : MonoBehaviour
 
     void Start()
     {
-        exclusionRadius = 2f;
+        exclusionRadius = 10f;
         SpawnPearlsAndFishes();
     }
 

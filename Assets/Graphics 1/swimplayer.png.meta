@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 29ad6a9da1ae2444c8ff6e46cc16b114
+guid: 63ae47776ed69764f931609fbbecedf8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 6
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: swimplayer_0
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 195
+        width: 179
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a302f0a9c8617b41b0c778f2f68746e
+      internalID: 1441996819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimplayer_1
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 193
+        width: 265
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71684e0aa43d0714985881d7a304e066
+      internalID: 1486606894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimplayer_2
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 182
+        width: 267
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ada46d8da39bd546bb1654b3998e445
+      internalID: -670635784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimplayer_3
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 157
+        width: 200
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71615d3cf727e4849b01bca2ad8540c4
+      internalID: 103881731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +190,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      swimplayer_0: 1441996819
+      swimplayer_1: 1486606894
+      swimplayer_2: -670635784
+      swimplayer_3: 103881731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

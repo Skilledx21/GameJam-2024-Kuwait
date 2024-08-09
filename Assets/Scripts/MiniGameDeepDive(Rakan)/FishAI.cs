@@ -101,10 +101,20 @@ public class FishAI : MonoBehaviour
 
     private void RotateTowardsDirection(Vector2 direction)
     {
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion currentRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, targetAngle));
         transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 5f);
+
+        //Filpping
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -121,7 +131,7 @@ public class FishAI : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //GAME OVER
-            GameManagerDeepDive.instance.GameOver();
+            DeepDiveUI.Instance.LosePanel();
             //Deactivate Player Object
 
         }

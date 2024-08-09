@@ -29,6 +29,10 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (!DeepDiveUI.Instance.isStarted) return;
+
+
         if (GameManagerDeepDive.instance._lose) {
             rb.velocity = Vector2.zero;
             return; //Stop the Controller when dead
@@ -50,32 +54,57 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
         if (isFlipped == false)
         {
-            if (rb.velocity.y > 0)
+            if (_InputX > 0 && _InputY > 0)
             {
-                targetRotation = Quaternion.Euler(0, 0, 120);
-            }
-            else if (rb.velocity.y < 0)
-            {
-                targetRotation = Quaternion.Euler(0, 0, 60);
-            }
-            else
-            {
-                targetRotation = Quaternion.Euler(0, 0, 90);
-            }
-        }
-        else
-        {
-            if (rb.velocity.y > 0)
-            {
-                targetRotation = Quaternion.Euler(0, 0, -120);
-            }
-            else if (rb.velocity.y < 0)
-            {
+                //W+D
                 targetRotation = Quaternion.Euler(0, 0, -60);
+                Debug.Log("Called -60");
+            }
+            else if (_InputX > 0 && _InputY < 0)
+            {
+                //S+D
+                targetRotation = Quaternion.Euler(0, 0, -120);
+                Debug.Log("Called -120");
+            }
+            else if (_InputY > 0)
+            {
+                targetRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (_InputY < 0)
+            {
+                targetRotation = Quaternion.Euler(0, 0, -180);
             }
             else
             {
                 targetRotation = Quaternion.Euler(0, 0, -90);
+            }
+        }
+        else
+        {
+            if (_InputX < 0 && _InputY > 0)
+            {
+                //W + A
+                targetRotation = Quaternion.Euler(0, 0, 60);
+                Debug.Log("Called 60");
+            }
+            else if (_InputX < 0 && _InputY < 0)
+            {
+                //S+A
+                targetRotation = Quaternion.Euler(0, 0, 120);
+                Debug.Log("Called -120");
+            }
+            else if (_InputY > 0)
+            {
+                targetRotation = Quaternion.Euler(0, 0, 0);
+            }
+             
+            else if (_InputY < 0)
+            {
+                targetRotation = Quaternion.Euler(0, 0, 180);
+            }
+            else
+            {
+                targetRotation = Quaternion.Euler(0, 0, 90);
             }
         }
 
@@ -85,14 +114,20 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
     void FlipPlayer()
     {
+        Vector3 playerScale = transform.localScale;
+        
         if (rb.velocity.x < 0)
         {
+            playerScale.x = 1f;
             isFlipped = true;
         }
         else if (rb.velocity.x > 0)
         {
+            playerScale.x = -1f;
             isFlipped = false;
         }
+
+        transform.localScale = playerScale;
     }
 
 }

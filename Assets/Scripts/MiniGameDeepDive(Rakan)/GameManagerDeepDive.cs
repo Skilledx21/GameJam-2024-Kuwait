@@ -6,21 +6,59 @@ using TMPro;
 
 public class GameManagerDeepDive : MonoBehaviour
 {
-    public TMP_Text _ScoreText;
-    const int _MAINSCENENUMBER = 0;
+    const int _MAINSCENENUMBER = 1;
+    const int _MAINMENUNUMBER = 0;
+
+    [SerializeField]float timer = 60f;
+
+    public int _pearlsNeed;
+
+    public int _pearlScore = 0;
+
+    public bool _lose = false;
+    public bool _Won;
+
+
     public static GameManagerDeepDive instance {  get; private set; }
     private void Awake()
     {
         instance = this;
     }
-    int _pearlScore = 0;
 
-    public bool _lose = false;
+
+
+    private void Start()
+    {
+        _pearlsNeed = 7;
+        _Won = false;
+
+    }
 
 
     private void Update()
     {
-        _ScoreText.text = $"Peals: {_pearlScore}";
+        if (!DeepDiveUI.Instance.isStarted) return;
+        if (_pearlsNeed <= 0)
+        {
+            //WON
+            WinGame();
+        }
+
+
+        if (_Won) return;
+
+        //timer
+        if (timer < 0)
+        {
+            //GAME OVER
+            DeepDiveUI.Instance.LosePanel();
+
+        } else
+        {
+            timer -= Time.deltaTime;
+        }
+
+
     }
 
 
@@ -28,19 +66,31 @@ public class GameManagerDeepDive : MonoBehaviour
     {
         _lose = false;
         _pearlScore += score;
+        _pearlsNeed--;
     }
 
     public void GameOver()
     {
-        //SaveSystem.instance.SaveInt("Pearl", _pearlScore);
         _lose = true;
         StartCoroutine(GameOverDelay());
     }
 
+    public void WinGame()
+    {
+        //DO SOMTHING GO BACK
+        _Won = true;
+    }
+
+    IEnumerator GameWin()
+    {
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene(_MAINSCENENUMBER);
+    }
+
     IEnumerator GameOverDelay()
     {
-        yield return new WaitForSeconds(7);
-        SceneManager.LoadScene(_MAINSCENENUMBER);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(_MAINMENUNUMBER);
     }
 
 
