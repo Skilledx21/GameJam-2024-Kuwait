@@ -20,12 +20,15 @@ public class PlayerControllerShip : MonoBehaviour
     private bool caughtFishinNet = false;
     private Coroutine vibrationCoroutine;
     private Coroutine catchtimerCoroutine;
+
+     Animator netanimator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        netanimator = Net.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
 
@@ -70,9 +73,10 @@ public class PlayerControllerShip : MonoBehaviour
 
     private void ThrowNet()
     {
+        netanimator.Play("Throw");
         Debug.Log("Thrown Net");
         NetThrown = true;
-        Net.SetActive(true);
+        
         canMove = false;
 
         float CatchfishDelay = Random.Range(5f, 15f);
@@ -80,9 +84,10 @@ public class PlayerControllerShip : MonoBehaviour
     }
     private void RaiseNet()
     {
+        netanimator.Play("RaiseNet");
         Debug.Log("Raise Net");
         NetThrown = false;
-        Net.SetActive(false);
+        
         canMove = true;
         isVibrating = false;
 
