@@ -7,6 +7,8 @@ using ArabicSupport;
 public class QuestionManager : MonoBehaviour
 {
     public Text questionText;
+    public Text[] answers;
+    public GameObject[] answerObjects;
     public Button[] answerButtons;
     public QuestionDatabase questionDatabase;
     private Question currentQuestion;
@@ -80,7 +82,8 @@ public class QuestionManager : MonoBehaviour
 
                 case AnswerType.Collider:
                     // Implement collider logic here
-                    GameObject colliderObject = question.answerObjects[i];
+                    GameObject colliderObject = answerObjects[i];
+                    answers[i].text = ArabicFixer.Fix(question.answers[i]);
                     colliderObject.SetActive(true);
                     colliderObject.GetComponent<AnswerCollider>().SetAnswer(question.answers[i], question.answers[i] == question.correctAnswer);
                     break;

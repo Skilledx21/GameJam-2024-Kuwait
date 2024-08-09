@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef9fd85b8822fa4392f617c6fa1014b, type: 3}
   m_Name: Question1
   m_EditorClassIdentifier: 
-  questionText: "\u0627\u0633\u0645\u064A \u0631\u0627\u0643\u0627\u0646 "
+  questionText: "\u0645\u0627 \u0647\u0648 \u0627\u0633\u0645 \u0627\u0644\u0642\u0635\u0631
+    \u0627\u0644\u0623\u062D\u0645\u0631 \u0628\u0627\u0644\u0643\u0648\u064A\u062A\u061F"
   answers:
-  - "\u0635\u062D"
-  - "\u0644\u0627 "
-  - "\u064A\u0645\u0643\u0646"
-  correctAnswer: Yes
-  answerTypes: 000000000000000000000000
+  - "\u0627\u0644\u0642\u0635\u0631 \u0627\u0644\u0623\u062D\u0645\u0631"
+  - "\u0644\u0642\u0635\u0631 \u0627\u0644\u0623\u0632\u0631\u0642"
+  - " \u0627\u0644\u0642\u0635\u0631 \u0627\u0644\u0623\u062E\u0636\u0631"
+  correctAnswer: "\u0627\u0644\u0642\u0635\u0631 \u0627\u0644\u0623\u062D\u0645\u0631"
+  answerTypes: 020000000200000002000000
   answerObjects: []
