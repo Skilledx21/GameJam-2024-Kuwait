@@ -7,22 +7,26 @@ public class GameManagerDeepDive : MonoBehaviour
 {
     const int _MAINSCENENUMBER = 0;
     public static GameManagerDeepDive instance {  get; private set; }
-    float _pearlScore = 0;
-
-    bool _lose = false;
-
-
-    public void AddScore(float score)
+    private void Awake()
     {
+        instance = this;
+    }
+    int _pearlScore = 0;
+
+    public bool _lose = false;
+
+
+    public void AddScore(int score)
+    {
+        _lose = false;
         _pearlScore += score;
     }
 
     public void GameOver()
     {
-        if (_lose)
-        {
-            StartCoroutine(GameOverDelay());
-        }
+        SaveSystem.instance.SaveInt("Pearl", _pearlScore);
+        _lose = true;
+        StartCoroutine(GameOverDelay());
     }
 
     IEnumerator GameOverDelay()

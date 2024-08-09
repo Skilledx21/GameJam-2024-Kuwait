@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+/// <summary>
+/// Movement for the diving 
+/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerControllerDeepDive : MonoBehaviour
 {
@@ -27,6 +29,9 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //if (GameManagerDeepDive.instance._lose) return; //Stop the Controller when dead
+
+
         _InputX = Input.GetAxis("Horizontal");
         _InputY = Input.GetAxis("Vertical");
 
@@ -86,4 +91,5 @@ public class PlayerControllerDeepDive : MonoBehaviour
             isFlipped = false;
         }
     }
+
 }
