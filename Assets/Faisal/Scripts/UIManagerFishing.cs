@@ -15,7 +15,7 @@ public class UIManagerFishing : MonoBehaviour
     [SerializeField] private int FishNeeded = 10;
     private float timeRemaining = 60f;
     private bool timerIsRunning = false;
-
+    public AudioSource OceanSound;
     [SerializeField] private GameObject HintPanel;
     [SerializeField] private Text ContinueText;
     [SerializeField] private Text TimeremainingText;
@@ -88,5 +88,6 @@ public class UIManagerFishing : MonoBehaviour
         Time.timeScale = 1f;
         HintPanel.SetActive(false);
         gameStarted = true;
+        OceanSound.Play();
     }
 }
