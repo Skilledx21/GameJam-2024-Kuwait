@@ -29,7 +29,10 @@ public class PlayerControllerDeepDive : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (GameManagerDeepDive.instance._lose) return; //Stop the Controller when dead
+        if (GameManagerDeepDive.instance._lose) {
+            rb.velocity = Vector2.zero;
+            return; //Stop the Controller when dead
+        } 
 
 
         _InputX = Input.GetAxis("Horizontal");

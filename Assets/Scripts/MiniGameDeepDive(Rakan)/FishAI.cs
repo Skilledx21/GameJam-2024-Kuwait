@@ -21,8 +21,8 @@ public class FishAI : MonoBehaviour
     private void Start()
     {
         roamSpeed = 1f;
-        detectRadius = 3f;
-        moveSpeed = 3f;
+        detectRadius = 5f;
+        moveSpeed = 2f;
         roamRadius = 4f;
         startPoint = transform.position; 
         StartCoroutine(Roam());
@@ -31,6 +31,7 @@ public class FishAI : MonoBehaviour
 
     private void Update()
     {
+        if (GameManagerDeepDive.instance._lose) return;
         DetectPlayer();
 
         if (player != null)
@@ -121,6 +122,8 @@ public class FishAI : MonoBehaviour
         {
             //GAME OVER
             GameManagerDeepDive.instance.GameOver();
+            //Deactivate Player Object
+
         }
     }
 }
