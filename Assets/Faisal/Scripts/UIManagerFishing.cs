@@ -13,7 +13,7 @@ public class UIManagerFishing : MonoBehaviour
     public Text Timelimit;
     public Text hint;
     [SerializeField] private int FishNeeded = 10;
-    private float timeRemaining = 45f;
+    private float timeRemaining = 30f;
     private bool timerIsRunning = false;
     public AudioSource OceanSound;
     [SerializeField] private GameObject HintPanel;

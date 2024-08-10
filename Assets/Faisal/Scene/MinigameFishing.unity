@@ -779,7 +779,7 @@ MonoBehaviour:
   CaughtFishText: {fileID: 1741821531}
   Timelimit: {fileID: 769322478}
   hint: {fileID: 189050794}
-  FishNeeded: 10
+  FishNeeded: 5
   OceanSound: {fileID: 571566774}
   HintPanel: {fileID: 116455711}
   ContinueText: {fileID: 402048801}
@@ -1472,6 +1472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 857908055}
   - component: {fileID: 857908054}
+  - component: {fileID: 857908056}
   m_Layer: 0
   m_Name: Air
   m_TagString: Untagged
@@ -1546,6 +1547,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857908056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857908053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc04d528ddb0b7d428c0ec46eba60c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CaughtFishText: {fileID: 0}
+  Timelimit: {fileID: 0}
+  hint: {fileID: 0}
+  FishNeeded: 10
+  OceanSound: {fileID: 0}
+  HintPanel: {fileID: 0}
+  ContinueText: {fileID: 0}
+  TimeremainingText: {fileID: 0}
+  FishCaughtText: {fileID: 0}
+  gameStarted: 0
 --- !u!1 &909013568
 GameObject:
   m_ObjectHideFlags: 0
