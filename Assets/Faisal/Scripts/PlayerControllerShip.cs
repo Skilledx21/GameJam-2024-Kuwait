@@ -88,7 +88,7 @@ public class PlayerControllerShip : MonoBehaviour
         caughtFishinNet = false;
         canMove = false;
 
-        float CatchfishDelay = Random.Range(5f, 15f);
+        float CatchfishDelay = Random.Range(3f, 7f);
         Invoke("CaughtFish", CatchfishDelay);
     }
     private void RaiseNet()

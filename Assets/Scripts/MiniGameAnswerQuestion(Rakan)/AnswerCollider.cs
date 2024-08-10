@@ -30,15 +30,17 @@ public class AnswerCollider : MonoBehaviour
     {
         //if the answer is correct let do something like display "Correct!" or whatever we want
         Debug.Log("Correct!");
-        Instantiate(Effect);
-        gameObject.SetActive(false);
+        //Instantiate(Effect);
+        //gameObject.SetActive(false);
+        QuestionManager.instance.CorrectAnswer();
+
     }
 
     void WrongAnswer()
     {
         //We can add whatever we want here
         Debug.Log("Wrong!");
-        Instantiate(Effect);
+        //Instantiate(Effect);
         gameObject.SetActive(false);
     }
 }

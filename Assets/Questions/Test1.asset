@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questions:
   - {fileID: 11400000, guid: 7906d9f10957c634d8db6f0ea436ae51, type: 2}
+  - {fileID: 11400000, guid: 6edb7a2767d5222499ae82f57e36c411, type: 2}
+  - {fileID: 11400000, guid: f41d706fa39592c4390a3ca7e8e578ba, type: 2}
+  - {fileID: 11400000, guid: 229f996ca0ee4c547ab4f14e5496799b, type: 2}
+  - {fileID: 11400000, guid: fdd9facdcd817224e92a3bd0aa406a7c, type: 2}
+  - {fileID: 11400000, guid: d1ada1f094e2ad44ba4cf23372eb886c, type: 2}
   - {fileID: 11400000, guid: bcdd10893fe45dd45a51f3a3f0b7a222, type: 2}

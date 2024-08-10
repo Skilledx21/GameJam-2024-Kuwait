@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartGameMenu.unity
+    guid: 4f125ede78df0dc49955b5448f0cc884
+  - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/MiniGameDeepDive.unity
     guid: d2833b20cef880641a4672853ccf143b
+  - enabled: 1
+    path: Assets/Scenes/MiniGameQuestionAnswer.unity
+    guid: a74a19d4ac55e8b4fbaac84028b2c2b0
+  - enabled: 1
+    path: Assets/Faisal/Scene/MinigameFishing.unity
+    guid: da0f8d2d58fe465489235fb1a000b83f
   m_configObjects: {}

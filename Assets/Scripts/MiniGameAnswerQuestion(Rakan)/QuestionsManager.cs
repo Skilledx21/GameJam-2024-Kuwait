@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 using ArabicSupport;
+using UnityEngine.SceneManagement;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -14,6 +15,14 @@ public class QuestionManager : MonoBehaviour
     private Question currentQuestion;
     private int currentQuestionIndex;
     public float letterPause = 0.05f;
+    private int questionsAnswered;
+
+    public static QuestionManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -91,13 +100,27 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
-    void CorrectAnswer()
+    public void CorrectAnswer()
     {
-        Debug.Log("Correct!");
-        // Code to unlock the next part of the level
+        Debug.Log("Correct Answer!");
+        questionsAnswered++;
+        for (int i = 0; i < answerObjects.Length; i++)
+        {
+            answerObjects[i].SetActive(false);
+            //answers[i].enabled = false;
+        }
+        if (questionsAnswered >=5)
+        {
+            GameManager.Instance.keysGained++;
+            GameManager.Instance.challenge1complete = true;
+            SceneManager.LoadScene("MainGame");
+        }
+        Debug.Log("This function finished");
+        LoadNewQuestion();
+
     }
 
-    void WrongAnswer()
+    public void WrongAnswer()
     {
         Debug.Log("Wrong!");
         GameManager.Instance.RestartGame();

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef9fd85b8822fa4392f617c6fa1014b, type: 3}
   m_Name: Question2 1
   m_EditorClassIdentifier: 
-  questionText: "\u0634\u0646\u0648 \u0627\u0633\u0645\u064A \u0627\u0633\u0645\u064A
-    \u0631\u0627\u0643\u0627\u0646 \u0648\u0644\u0627 \u0641\u064A\u0635\u0644"
+  questionText: " \u0641\u064A \u0623\u064A \u0639\u0627\u0645 \u062A\u0645 \u0628\u0646\u0627\u0621
+    \u0627\u0644\u0642\u0635\u0631 \u0627\u0644\u0623\u062D\u0645\u0631\u061F"
   answers:
-  - "\u0641\u064A\u0635\u0644"
-  - "\u0631\u0627\u0643\u0627\u0646"
-  - "\u0641\u062C\u0631\u064A"
-  correctAnswer: "\u0641\u064A\u0635\u0644"
-  answerTypes: 000000000000000000000000
+  - 1950
+  - 1820
+  - 1897
+  correctAnswer: 1897
+  answerTypes: 020000000200000002000000
   answerObjects: []

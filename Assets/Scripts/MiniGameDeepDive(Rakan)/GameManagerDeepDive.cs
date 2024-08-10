@@ -29,7 +29,7 @@ public class GameManagerDeepDive : MonoBehaviour
 
     private void Start()
     {
-        _pearlsNeed = 7;
+        _pearlsNeed = 3;
         _Won = false;
 
     }
@@ -38,11 +38,7 @@ public class GameManagerDeepDive : MonoBehaviour
     private void Update()
     {
         if (!DeepDiveUI.Instance.isStarted) return;
-        if (_pearlsNeed <= 0)
-        {
-            //WON
-            WinGame();
-        }
+        
 
 
         if (_Won) return;
@@ -67,6 +63,11 @@ public class GameManagerDeepDive : MonoBehaviour
         _lose = false;
         _pearlScore += score;
         _pearlsNeed--;
+
+        if (_pearlScore >= 3)
+        {
+            WinGame();
+        }
     }
 
     public void GameOver()
@@ -79,18 +80,17 @@ public class GameManagerDeepDive : MonoBehaviour
     {
         //DO SOMTHING GO BACK
         _Won = true;
+        GameManager.Instance.keysGained++;
+        GameManager.Instance.challenge3complete = true;
+        SceneManager.LoadScene("MainGame");
     }
 
-    IEnumerator GameWin()
-    {
-        yield return new WaitForSeconds(10);
-        SceneManager.LoadScene(_MAINSCENENUMBER);
-    }
-
+ 
     IEnumerator GameOverDelay()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(_MAINMENUNUMBER);
+        GameManager.Instance.RestartGame();
+        
     }
 
 

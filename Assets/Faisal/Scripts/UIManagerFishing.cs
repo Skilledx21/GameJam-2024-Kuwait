@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class UIManagerFishing : MonoBehaviour
 {
     public static UIManagerFishing Instance { get; private set; }
@@ -13,7 +13,7 @@ public class UIManagerFishing : MonoBehaviour
     public Text Timelimit;
     public Text hint;
     [SerializeField] private int FishNeeded = 10;
-    private float timeRemaining = 60f;
+    private float timeRemaining = 45f;
     private bool timerIsRunning = false;
     public AudioSource OceanSound;
     [SerializeField] private GameObject HintPanel;
@@ -76,10 +76,14 @@ public class UIManagerFishing : MonoBehaviour
         if (FishCaught >= FishNeeded)
         {
             Debug.Log("You Won!");
+            GameManager.Instance.keysGained++;
+            GameManager.Instance.challenge2complete = true;
+            SceneManager.LoadScene("MainGame");
         }
         else
         {
             Debug.Log("You Lost");
+            GameManager.Instance.RestartGame();
         }
     }
 
